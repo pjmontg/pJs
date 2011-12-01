@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Pipeline JavaScript Framework Demo</title>
+
+<link rel="stylesheet" href="css/styles.css"/>
+<link rel="stylesheet" href="css/jquery-css/default/jquery-ui.css"/>
+
+</head>
+  
+<body>
+    <div id="mainLoader" class="loader"><img src="/images/ajax-loader.gif"/> Loading...</div>
+    <div id="main">
+      <div id="menu-nav-div">
+     	 <ul id="primary-nav"></ul>
+      </div>
+      <div id="toolbar"></div>
+      <div id="page" >
+      	<div id="pageLoader" class="loader"><img src="/images/ajax-loader.gif"/> Loading...</div>
+      	<div id="pageContent"></div>
+	  </div>
+  	</div>
+</body>
+<!-- load common modules -->
+<script type="text/javascript" src="script/pjs/common/pjs.common.js"></script>
+<script type="text/javascript" src="script/pjs/common/pjs.exception.js"></script>
+<script type="text/javascript" src="script/pjs/common/pjs.util.js"></script>
+
+<!-- load base modules -->
+<script type="text/javascript" src="script/pjs/base/pjs.mediator.js"></script>
+<script type="text/javascript" src="script/pjs/base/pjs.base.events.js"></script>
+<script type="text/javascript" src="script/pjs/base/pjs.context.js"></script>
+<script type="text/javascript" src="script/pjs/base/pjs.command.js"></script>
+<script type="text/javascript" src="script/pjs/base/pjs.module.js"></script>
+
+<!-- load core modules -->
+<script type="text/javascript" src="script/pjs/core/pjs.core.events.js"></script>
+<script type="text/javascript" src="script/pjs/core/pjs.eventmanager.js"></script>
+<script type="text/javascript" src="script/pjs/core/pjs.core.js"></script>
+
+<!-- load libraries used in extensions -->
+<script type="text/javascript" src="script/pjs/ext/lib/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="script/pjs/ext/lib/jquery-ui-1.8.13.custom.min.js"></script>
+<script type="text/javascript">
+	p$.registerLibrary('jquery-1.6.4');
+	p$.registerLibrary('jquery-ui-1.8.13');
+</script>
+
+<!-- load extensions -->
+<script type="text/javascript" src="script/pjs/ext/core/pjs.ext.base.js"></script>
+<script type="text/javascript" src="script/pjs/ext/core/pjs.ext.dialog.js"></script>
+<script type="text/javascript" src="script/pjs/ext/core/pjs.ext.ajax.js"></script>
+<script type="text/javascript" src="script/pjs/ext/core/pjs.ext.template.js"></script>
+
+<!-- load subclassed mediators -->
+<script type="text/javascript" src="script/pjs/ext/mediator/pjs.mediator.basic.js"></script>
+
+
+<!-- load custom subclassed modules -->
+<script type="text/javascript" src="script/demo/demo.event.js"></script>
+<script type="text/javascript" src="script/demo/demo.modules.service.js"></script>
+<script type="text/javascript" src="script/demo/demo.modules.data.js"></script>
+<script type="text/javascript" src="script/demo/demo.modules.view.js"></script>
+<script type="text/javascript" src="script/demo/demo.command.js"></script>
+<script type="text/javascript" src="script/demo/demo.context.js"></script>
+
+
+<script type="text/javascript">
+	$(document).ready( function() {
+		try {
+			p$.setLoggingLevel(p$.INFO);
+			
+			var appCore = p$.include("pjs.core").Core;
+			var demoCtx = p$.include("demo.context");
+		
+			appCore.init(new demoCtx.DemoContext());
+			appCore.run();
+		} catch(e) {
+			if (e.message !== undefined) {
+				p$.log.error(e.message);
+			} else {
+				p$.log.error(e);	
+			}
+		}
+
+	});
+</script>
+
+</html>
