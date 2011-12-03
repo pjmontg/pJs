@@ -1,4 +1,14 @@
-//TODO - event manager manage view event registration, so when a module is stopped, all view and context event listeners are removed
+/*!
+ * pJs JavaScript Framework v1.0
+ * http://patrickj.co/
+ * 
+ * Copyright 2011, Patrick Montgomery
+ * Licensed under the GPL Version 2 licenses.
+ *
+ * Date: Dec 3 2011
+ */
+
+ //TODO - event manager manage view event registration, so when a module is stopped, all view and context event listeners are removed
 
 p$.namespace("pjs.core.eventmanager", function(pub, log) {
 	var ex = p$.include("pjs.common.exception");

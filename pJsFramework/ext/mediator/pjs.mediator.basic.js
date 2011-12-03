@@ -1,3 +1,12 @@
+/*!
+ * pJs JavaScript Framework v1.0
+ * http://patrickj.co/
+ * 
+ * Copyright 2011, Patrick Montgomery
+ * Licensed under the GPL Version 2 licenses.
+ *
+ * Date: Dec 3 2011
+ */
 
 p$.namespace("pjs.ext.mediator.basic", function(pub, log){
 	var med = p$.include("pjs.base.mediator");
